@@ -1,0 +1,470 @@
+# Port constraint master -- India East Coast discharge ports plus the origins
+# in scope. Every figure carries the source it came from.
+#
+# IMPORTANT: declared drafts are not constants. SMP Kolkata reissues Hooghly
+# draft circulars monthly and the permissible draft there is a function of LOA.
+# The values below are the current published figures; the tide model and the
+# monthly circular adapter override them at runtime where available.
+#
+# water_density is the density actually found at the berth, not a nominal
+# value: the Hooghly is brackish and the Mississippi fresh, which changes
+# loadable tonnage materially through the fresh water allowance.
+
+meta:
+  updated: 2026-09-03
+  units:
+    draft: metres
+    loa: metres
+    beam: metres
+    dwt: tonnes
+    discharge_rate: tonnes per day
+    water_density: t/m3
+
+ports:
+
+  # ------------------------------------------------------------------ INDIA
+
+  - code: INPRT
+    name: Paradip
+    country: IN
+    role: discharge
+    latitude: 20.264
+    longitude: 86.675
+    water_density: 1.025
+    tidal_range_m: 2.1
+    tide_constrained: false
+    source: https://www.paradipport.gov.in/know-your-port/
+    notes: >
+      Entrance channel minimum depth 17.1 m, maximum LOA 300 m. Berth-level
+      maximum permissible drafts below are those printed on the port daily
+      traffic update, which the platform scrapes every day.
+    berths:
+      - name: CB-1
+        max_draft_m: 14.5
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 100000
+        discharge_rate_tpd: 25000
+        cargo_types: thermal_coal,coking_coal
+        requires_gear: false
+        source: paradip_daily_traffic
+      - name: CB-2
+        max_draft_m: 14.5
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 100000
+        discharge_rate_tpd: 25000
+        cargo_types: thermal_coal,coking_coal
+        requires_gear: false
+        source: paradip_daily_traffic
+      - name: EQ-2
+        max_draft_m: 14.5
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 100000
+        discharge_rate_tpd: 20000
+        cargo_types: thermal_coal
+        requires_gear: false
+        source: paradip_daily_traffic
+      - name: MPB
+        max_draft_m: 14.5
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 100000
+        discharge_rate_tpd: 18000
+        cargo_types: thermal_coal,coking_coal,general
+        requires_gear: true
+        source: paradip_daily_traffic
+      - name: IOB
+        max_draft_m: 13.0
+        max_loa_m: 240.0
+        max_beam_m: 45.0
+        max_dwt: 90000
+        discharge_rate_tpd: 20000
+        cargo_types: iron_ore
+        requires_gear: false
+        source: paradip_daily_traffic
+      - name: NIOB
+        max_draft_m: 15.0
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 120000
+        discharge_rate_tpd: 22000
+        cargo_types: iron_ore
+        requires_gear: false
+        source: paradip_daily_traffic
+      - name: KICT
+        max_draft_m: 14.5
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 100000
+        discharge_rate_tpd: 20000
+        cargo_types: coking_coal,thermal_coal
+        requires_gear: false
+        source: paradip_daily_traffic
+
+  - code: INVTZ
+    name: Visakhapatnam
+    country: IN
+    role: discharge
+    latitude: 17.686
+    longitude: 83.283
+    water_density: 1.025
+    tidal_range_m: 1.6
+    tide_constrained: false
+    source: http://vizagport.com/Template/navigateTemplate/gnt/SGFuZGxpbmcgRmFjaWxpdGllcw==
+    notes: >
+      Outer harbour deep draft coal berth, quay length 356 m, handles vessels
+      to 18.10 m draft and 200,000 DWT. Inner harbour berths are materially
+      shallower and take Handysize/Supramax parcels only.
+    berths:
+      - name: OuterHarbour-EQ1
+        max_draft_m: 18.1
+        max_loa_m: 300.0
+        max_beam_m: 50.0
+        max_dwt: 200000
+        discharge_rate_tpd: 35000
+        cargo_types: coking_coal,thermal_coal
+        requires_gear: false
+        source: vizagport.com handling facilities
+      - name: OuterHarbour-WQ
+        max_draft_m: 16.5
+        max_loa_m: 290.0
+        max_beam_m: 48.0
+        max_dwt: 170000
+        discharge_rate_tpd: 28000
+        cargo_types: thermal_coal,iron_ore
+        requires_gear: false
+        source: vizagport.com handling facilities
+      - name: InnerHarbour-GCB
+        max_draft_m: 10.7
+        max_loa_m: 230.0
+        max_beam_m: 32.3
+        max_dwt: 60000
+        discharge_rate_tpd: 12000
+        cargo_types: thermal_coal,general
+        requires_gear: true
+        source: vizagport.com handling facilities
+
+  - code: INGGV
+    name: Gangavaram
+    country: IN
+    role: discharge
+    latitude: 17.630
+    longitude: 83.235
+    water_density: 1.025
+    tidal_range_m: 1.6
+    tide_constrained: false
+    source: https://www.adaniports.com/ports-and-terminals/gangavaram-port
+    notes: >
+      Deepest of the East Coast ports. Water depth up to 21 m, capable of
+      fully laden Super Capesize to 200,000 DWT. Nine berths with depths up
+      to 19.5 m.
+    berths:
+      - name: MechanisedImport-1
+        max_draft_m: 19.5
+        max_loa_m: 300.0
+        max_beam_m: 50.0
+        max_dwt: 200000
+        discharge_rate_tpd: 40000
+        cargo_types: thermal_coal,coking_coal
+        requires_gear: false
+        source: adaniports.com Gangavaram
+      - name: MechanisedImport-2
+        max_draft_m: 18.0
+        max_loa_m: 300.0
+        max_beam_m: 50.0
+        max_dwt: 180000
+        discharge_rate_tpd: 35000
+        cargo_types: thermal_coal,coking_coal
+        requires_gear: false
+        source: adaniports.com Gangavaram
+      - name: Multipurpose-3
+        max_draft_m: 14.0
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 95000
+        discharge_rate_tpd: 18000
+        cargo_types: thermal_coal,general
+        requires_gear: true
+        source: adaniports.com Gangavaram
+
+  - code: INDHR
+    name: Dhamra
+    country: IN
+    role: discharge
+    latitude: 20.783
+    longitude: 86.976
+    water_density: 1.025
+    tidal_range_m: 3.2
+    tide_constrained: false
+    source: https://www.adaniports.com/ports-and-terminals/dhamra-port
+    notes: >
+      Deep draft port, maximum LOA 290 m with 18 m draught and 47 m beam,
+      capacity for 180,000 DWT super Capesize vessels.
+    berths:
+      - name: DPCL-1
+        max_draft_m: 18.0
+        max_loa_m: 290.0
+        max_beam_m: 47.0
+        max_dwt: 180000
+        discharge_rate_tpd: 38000
+        cargo_types: thermal_coal,coking_coal
+        requires_gear: false
+        source: adaniports.com Dhamra
+      - name: DPCL-2
+        max_draft_m: 18.0
+        max_loa_m: 290.0
+        max_beam_m: 47.0
+        max_dwt: 180000
+        discharge_rate_tpd: 38000
+        cargo_types: thermal_coal,iron_ore
+        requires_gear: false
+        source: adaniports.com Dhamra
+
+  - code: INGPR
+    name: Gopalpur
+    country: IN
+    role: discharge
+    latitude: 19.263
+    longitude: 84.921
+    water_density: 1.025
+    tidal_range_m: 1.8
+    tide_constrained: false
+    source: https://en.wikipedia.org/wiki/Gopalpur_Port
+    notes: >
+      Three multipurpose berths at 14.5 m draft. Harbour natural depth 18.5 m;
+      mini-Cape vessels over 100,000 DWT can be handled. Directly exposed to
+      Bay of Bengal cyclone tracks.
+    berths:
+      - name: MPB-1
+        max_draft_m: 14.5
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 105000
+        discharge_rate_tpd: 16000
+        cargo_types: thermal_coal,general
+        requires_gear: true
+        source: Gopalpur Ports published berth data
+      - name: MPB-2
+        max_draft_m: 14.5
+        max_loa_m: 250.0
+        max_beam_m: 45.0
+        max_dwt: 105000
+        discharge_rate_tpd: 16000
+        cargo_types: thermal_coal,general
+        requires_gear: true
+        source: Gopalpur Ports published berth data
+
+  - code: INHAL
+    name: Haldia
+    country: IN
+    role: discharge
+    latitude: 22.033
+    longitude: 88.089
+    # The Hooghly is brackish this far upstream. This materially reduces
+    # loadable tonnage versus a seawater berth and is why the fresh water
+    # allowance correction matters here more than anywhere else in scope.
+    water_density: 1.008
+    tidal_range_m: 4.6
+    tide_constrained: true
+    source: https://smportkolkata.shipping.gov.in/
+    notes: >
+      Maximum LOA 230 m (vessels to 240 m LOA / 32.26 m beam accepted in
+      practice) and maximum draft about 8.5 m. Permissible draft is a
+      function of LOA and is reissued monthly by SMP Kolkata draft circular,
+      so this value is a default that the circular adapter overrides.
+      Capesize parcels reach Haldia only by lightering at Sandheads or Sagar.
+    berths:
+      - name: HDC-2
+        max_draft_m: 8.5
+        max_loa_m: 230.0
+        max_beam_m: 32.26
+        max_dwt: 45000
+        discharge_rate_tpd: 9000
+        cargo_types: thermal_coal,coking_coal,general
+        requires_gear: true
+        source: SMP Kolkata Haldia Dock Complex
+      - name: HDC-4B
+        max_draft_m: 8.5
+        max_loa_m: 230.0
+        max_beam_m: 32.26
+        max_dwt: 45000
+        discharge_rate_tpd: 10000
+        cargo_types: thermal_coal,coking_coal
+        requires_gear: true
+        source: SMP Kolkata Haldia Dock Complex
+
+  - code: INSAG
+    name: Sagar Anchorage
+    country: IN
+    role: transhipment
+    latitude: 21.650
+    longitude: 88.050
+    water_density: 1.015
+    tidal_range_m: 4.2
+    tide_constrained: true
+    source: https://smportkolkata.shipping.gov.in/
+    notes: >
+      Transloading anchorage, roughly 9-10 m available depth. Floating cranes
+      discharge into barges or daughter vessels for Haldia.
+    berths:
+      - name: SagarAnchorage
+        max_draft_m: 9.5
+        max_loa_m: 300.0
+        max_beam_m: 50.0
+        max_dwt: 180000
+        discharge_rate_tpd: 12000
+        cargo_types: thermal_coal,coking_coal
+        requires_gear: false
+        source: SMP Kolkata transloading facilities
+
+  - code: INSND
+    name: Sandheads
+    country: IN
+    role: transhipment
+    latitude: 21.050
+    longitude: 88.300
+    water_density: 1.024
+    tidal_range_m: 3.5
+    tide_constrained: false
+    source: https://smportkolkata.shipping.gov.in/
+    notes: >
+      Deep water transloading anchorage with 40-50 m of water. A fully laden
+      Capesize can lighter here into daughter vessels or barges for Haldia,
+      which is the central lightering trade-off in the optimiser.
+    berths:
+      - name: SandheadsAnchorage
+        max_draft_m: 22.0
+        max_loa_m: 340.0
+        max_beam_m: 60.0
+        max_dwt: 210000
+        discharge_rate_tpd: 15000
+        cargo_types: thermal_coal,coking_coal
+        requires_gear: false
+        source: SMP Kolkata transloading facilities
+
+  # ---------------------------------------------------------------- ORIGINS
+
+  - code: AUNTL
+    name: Newcastle
+    country: AU
+    role: load
+    latitude: -32.925
+    longitude: 151.780
+    water_density: 1.025
+    tidal_range_m: 1.3
+    source: https://www.portofnewcastle.com.au/
+    berths:
+      - name: PWCS-Carrington
+        max_draft_m: 15.2
+        max_loa_m: 300.0
+        max_beam_m: 50.0
+        max_dwt: 190000
+        discharge_rate_tpd: 60000
+        cargo_types: thermal_coal
+        source: Port of Newcastle published limits
+
+  - code: AUHPT
+    name: Hay Point / Dalrymple Bay
+    country: AU
+    role: load
+    latitude: -21.283
+    longitude: 149.300
+    water_density: 1.025
+    tidal_range_m: 5.5
+    tide_constrained: true
+    source: https://www.nqbp.com.au/
+    berths:
+      - name: DBCT
+        max_draft_m: 17.4
+        max_loa_m: 300.0
+        max_beam_m: 50.0
+        max_dwt: 200000
+        discharge_rate_tpd: 65000
+        cargo_types: coking_coal,thermal_coal
+        source: DBCT published limits
+
+  - code: IDTAB
+    name: Taboneo Anchorage
+    country: ID
+    role: load
+    latitude: -3.650
+    longitude: 114.450
+    water_density: 1.024
+    tidal_range_m: 1.8
+    source: Kalimantan anchorage floating-crane operations
+    notes: >
+      Open anchorage loading by floating crane from barges. Loading stops in
+      heavy rain, which is why Kalimantan monsoon rainfall is a feature in the
+      laycan risk model.
+    berths:
+      - name: TaboneoAnchorage
+        max_draft_m: 15.5
+        max_loa_m: 300.0
+        max_beam_m: 50.0
+        max_dwt: 180000
+        discharge_rate_tpd: 18000
+        cargo_types: thermal_coal
+        source: Kalimantan anchorage practice
+
+  - code: MZBEW
+    name: Beira
+    country: MZ
+    role: load
+    latitude: -19.833
+    longitude: 34.850
+    water_density: 1.020
+    tidal_range_m: 6.4
+    tide_constrained: true
+    source: https://www.portosdemocambique.co.mz/
+    notes: Channel-restricted and strongly tide dependent.
+    berths:
+      - name: BeiraCoalTerminal
+        max_draft_m: 12.0
+        max_loa_m: 240.0
+        max_beam_m: 40.0
+        max_dwt: 80000
+        discharge_rate_tpd: 15000
+        cargo_types: coking_coal,thermal_coal
+        source: Port of Beira published limits
+
+  - code: USORF
+    name: Norfolk / Lamberts Point
+    country: US
+    role: load
+    latitude: 36.865
+    longitude: -76.330
+    water_density: 1.023
+    tidal_range_m: 0.8
+    source: https://www.nscorp.com/
+    berths:
+      - name: LambertsPoint
+        max_draft_m: 15.2
+        max_loa_m: 300.0
+        max_beam_m: 50.0
+        max_dwt: 175000
+        discharge_rate_tpd: 55000
+        cargo_types: coking_coal,thermal_coal
+        source: Lamberts Point published limits
+
+  - code: USMSR
+    name: New Orleans / Mississippi River
+    country: US
+    role: load
+    latitude: 29.950
+    longitude: -90.070
+    # Fresh water. A vessel loads to its fresh water marks here and gains
+    # draft on reaching salt water, which the loadable-tonnes engine credits.
+    water_density: 1.000
+    tidal_range_m: 0.4
+    source: https://www.portnola.com/
+    berths:
+      - name: MidstreamAnchorage
+        max_draft_m: 13.7
+        max_loa_m: 290.0
+        max_beam_m: 48.0
+        max_dwt: 160000
+        discharge_rate_tpd: 30000
+        cargo_types: thermal_coal,coking_coal
+        source: Lower Mississippi published draft

@@ -1,0 +1,210 @@
+# Dry bulk vessel classes in scope for East Coast India coal imports.
+#
+# Figures are representative of a modern vessel in each class rather than any
+# single ship. Where a real candidate vessel is being screened, its own
+# particulars should override these; the engine accepts either.
+#
+# tpc (tonnes per centimetre immersion) is derived as:
+#     TPC = waterplane_area * density / 100
+#         ~= (Cwp * LOA * beam) * 1.025 / 100
+# with a waterplane coefficient Cwp of about 0.86-0.88 for a loaded bulk
+# carrier. It is the sensitivity of displacement to draft, and it is what
+# turns a centimetre of extra permissible draft into tonnes of extra cargo.
+#
+# grain_cubic_m3 matters for low calorific value Indonesian coal: at a
+# stowage factor around 1.30 m3/t the holds fill before the marks are
+# reached, so volume binds before deadweight does.
+
+meta:
+  updated: 2026-09-03
+  units:
+    dwt: tonnes
+    loa: metres
+    beam: metres
+    draft: metres
+    lightship: tonnes
+    tpc: tonnes per centimetre
+    grain_cubic: cubic metres
+    consumption: tonnes per day
+    speed: knots
+
+classes:
+
+  - name: Handysize
+    dwt_typical: 32000
+    dwt_min: 10000
+    dwt_max: 40000
+    loa_m: 180.0
+    beam_m: 28.0
+    summer_draft_m: 10.2
+    lightship_t: 7800
+    tpc: 38.4
+    grain_cubic_m3: 42500
+    geared: true
+    service_speed_kn: 13.5
+    consumption_laden_tpd: 20.0
+    consumption_ballast_tpd: 18.0
+    consumption_port_tpd: 3.5
+    constants_t: 350
+    notes: Haldia direct, Gopalpur, and daughter vessel for Sandheads lightering.
+
+  - name: Supramax
+    dwt_typical: 58000
+    dwt_min: 50000
+    dwt_max: 60000
+    loa_m: 190.0
+    beam_m: 32.26
+    summer_draft_m: 12.8
+    lightship_t: 10900
+    tpc: 54.0
+    grain_cubic_m3: 72000
+    geared: true
+    service_speed_kn: 14.0
+    consumption_laden_tpd: 26.0
+    consumption_ballast_tpd: 23.5
+    consumption_port_tpd: 4.5
+    constants_t: 450
+    notes: The Indonesia to East Coast India workhorse. Geared, so it can work anchorages.
+
+  - name: Ultramax
+    dwt_typical: 63500
+    dwt_min: 60000
+    dwt_max: 66000
+    loa_m: 200.0
+    beam_m: 32.26
+    summer_draft_m: 13.3
+    lightship_t: 11600
+    tpc: 56.8
+    grain_cubic_m3: 78000
+    geared: true
+    service_speed_kn: 14.0
+    consumption_laden_tpd: 27.0
+    consumption_ballast_tpd: 24.0
+    consumption_port_tpd: 4.5
+    constants_t: 450
+    notes: Larger geared alternative to Supramax on the same lanes.
+
+  - name: Panamax
+    dwt_typical: 76000
+    dwt_min: 70000
+    dwt_max: 80000
+    loa_m: 225.0
+    beam_m: 32.26
+    summer_draft_m: 14.0
+    lightship_t: 12600
+    tpc: 63.1
+    grain_cubic_m3: 89000
+    geared: false
+    service_speed_kn: 14.0
+    consumption_laden_tpd: 32.0
+    consumption_ballast_tpd: 28.5
+    consumption_port_tpd: 5.0
+    constants_t: 500
+    notes: Gearless. Requires shore cranes or floating cranes at the discharge berth.
+
+  - name: Kamsarmax
+    dwt_typical: 82000
+    dwt_min: 80000
+    dwt_max: 85000
+    loa_m: 229.0
+    beam_m: 32.26
+    summer_draft_m: 14.4
+    lightship_t: 13100
+    tpc: 65.9
+    grain_cubic_m3: 97000
+    geared: false
+    service_speed_kn: 14.0
+    consumption_laden_tpd: 33.0
+    consumption_ballast_tpd: 29.0
+    consumption_port_tpd: 5.0
+    constants_t: 500
+    notes: >
+      LOA capped at 229 m for the Kamsar bauxite berth. Common on Australia
+      and US East Coast to India coal lanes.
+
+  - name: PostPanamax
+    dwt_typical: 93000
+    dwt_min: 85000
+    dwt_max: 110000
+    loa_m: 235.0
+    beam_m: 38.0
+    summer_draft_m: 14.9
+    lightship_t: 15200
+    tpc: 78.6
+    grain_cubic_m3: 106000
+    geared: false
+    service_speed_kn: 14.0
+    consumption_laden_tpd: 36.0
+    consumption_ballast_tpd: 31.0
+    consumption_port_tpd: 5.5
+    constants_t: 550
+
+  - name: Capesize
+    dwt_typical: 180000
+    dwt_min: 150000
+    dwt_max: 200000
+    loa_m: 292.0
+    beam_m: 45.0
+    summer_draft_m: 18.2
+    lightship_t: 24000
+    tpc: 118.5
+    grain_cubic_m3: 198000
+    geared: false
+    service_speed_kn: 14.0
+    consumption_laden_tpd: 52.0
+    consumption_ballast_tpd: 45.0
+    consumption_port_tpd: 7.0
+    constants_t: 800
+    notes: >
+      Reaches Gangavaram, Dhamra and Vizag outer harbour directly. Reaches
+      Haldia only by lightering at Sandheads or Sagar.
+
+  - name: Newcastlemax
+    dwt_typical: 208000
+    dwt_min: 200000
+    dwt_max: 220000
+    loa_m: 300.0
+    beam_m: 50.0
+    summer_draft_m: 18.5
+    lightship_t: 26500
+    tpc: 135.2
+    grain_cubic_m3: 225000
+    geared: false
+    service_speed_kn: 14.0
+    consumption_laden_tpd: 56.0
+    consumption_ballast_tpd: 48.0
+    consumption_port_tpd: 7.5
+    constants_t: 850
+    notes: LOA 300 m and beam 50 m to suit the Port of Newcastle berth limits.
+
+# Bulk cargo stowage factors, used for the volume (cubic) constraint.
+#
+# `category` is the generic commodity a berth is equipped to handle, and is
+# what the feasibility check matches against berth cargo_types. `name` is the
+# specific grade, which is what drives stowage factor and calorific value.
+cargoes:
+  - name: thermal_coal_high_cv
+    category: thermal_coal
+    description: Australian 6000 kcal/kg NAR
+    stowage_factor_m3_per_t: 1.22
+    gcv_kcal_per_kg: 6000
+  - name: thermal_coal_mid_cv
+    category: thermal_coal
+    description: South African / US mid grade
+    stowage_factor_m3_per_t: 1.28
+    gcv_kcal_per_kg: 5500
+  - name: thermal_coal_low_cv
+    category: thermal_coal
+    description: Indonesian sub-bituminous, ICI-4 grade
+    stowage_factor_m3_per_t: 1.35
+    gcv_kcal_per_kg: 4200
+  - name: coking_coal
+    category: coking_coal
+    description: Premium low volatile hard coking coal
+    stowage_factor_m3_per_t: 1.19
+    gcv_kcal_per_kg: 7000
+  - name: iron_ore
+    category: iron_ore
+    description: Fines, backhaul cargo
+    stowage_factor_m3_per_t: 0.42
+    gcv_kcal_per_kg: 0

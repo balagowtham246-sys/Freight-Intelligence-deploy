@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+.env
+.env.*
+backend/data/*.db*
+backend/data/warehouse.db*
+/app
+backend/data/parquet/*.parquet
+backend/data/cache/
+*.log
+.pytest_cache/
+.DS_Store
+
+# playwright artefacts
+.playwright-mcp/
+*.png
+*.tsbuildinfo
+
+# IBTrACS is a 27 MB CSV that NOAA serves permanently from a stable URL, so it
+# is re-fetchable at any time. The port berthing PDFs are archived precisely
+# because they are NOT: the publisher overwrites the filenames annually and the
+# history cannot be bought or recovered once missed. Different rules apply.
+backend/data/raw/ibtracs/

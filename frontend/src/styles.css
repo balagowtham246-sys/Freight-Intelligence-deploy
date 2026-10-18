@@ -1,0 +1,281 @@
+:root {
+  --bg: #0e1116;
+  --panel: #161b22;
+  --panel-2: #1c232c;
+  --border: #2a3038;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #4493f8;
+  --good: #3fb950;
+  --warn: #d29922;
+  --bad: #f85149;
+  --real: #238636;
+  --synthetic: #9e6a03;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.app { display: flex; min-height: 100vh; }
+
+/* ------------------------------------------------------------- sidebar */
+
+.sidebar {
+  width: 232px;
+  flex-shrink: 0;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  padding: 0 20px 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.brand h1 { font-size: 15px; margin: 0 0 4px; letter-spacing: -0.2px; }
+.brand p { font-size: 11px; color: var(--muted); margin: 0; }
+
+.nav button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 9px 20px;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.nav button:hover { color: var(--text); background: var(--panel-2); }
+.nav button.active {
+  color: var(--text);
+  border-left-color: var(--accent);
+  background: var(--panel-2);
+}
+
+.sidebar-foot {
+  margin-top: auto;
+  padding: 16px 20px 0;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* -------------------------------------------------------------- layout */
+
+.main { flex: 1; padding: 24px 32px; overflow-x: hidden; max-width: 1400px; }
+
+.page-head { margin-bottom: 20px; }
+.page-head h2 { margin: 0 0 4px; font-size: 20px; letter-spacing: -0.3px; }
+.page-head p { margin: 0; color: var(--muted); font-size: 13px; max-width: 760px; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.panel h3 {
+  margin: 0 0 14px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.grid { display: grid; gap: 16px; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1100px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------------- forms */
+
+.form-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+
+.field select, .field input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  min-width: 150px;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #06101f;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* --------------------------------------------------------------- stats */
+
+.stat { background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.stat .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.stat .value { font-size: 24px; font-weight: 600; margin-top: 4px; letter-spacing: -0.5px; }
+.stat .sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+/* -------------------------------------------------------------- tables */
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+td { padding: 8px 10px; border-bottom: 1px solid #21262d; }
+tr:last-child td { border-bottom: none; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.table-scroll { overflow-x: auto; }
+
+/* -------------------------------------------------------------- badges */
+
+.badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.badge-real { background: rgba(35, 134, 54, 0.18); color: var(--good); border: 1px solid rgba(63, 185, 80, 0.35); }
+.badge-synthetic { background: rgba(158, 106, 3, 0.18); color: var(--warn); border: 1px solid rgba(210, 153, 34, 0.35); }
+.badge-direct { background: rgba(68, 147, 248, 0.15); color: var(--accent); border: 1px solid rgba(68, 147, 248, 0.3); }
+.badge-lightering { background: rgba(163, 113, 247, 0.15); color: #a371f7; border: 1px solid rgba(163, 113, 247, 0.3); }
+.badge-reject { background: rgba(248, 81, 73, 0.15); color: var(--bad); border: 1px solid rgba(248, 81, 73, 0.3); }
+
+/* ---------------------------------------------------------- provenance */
+
+.provenance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.provenance a { color: var(--accent); text-decoration: none; }
+.provenance a:hover { text-decoration: underline; }
+
+/* ------------------------------------------------------------- options */
+
+.option {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  background: var(--panel-2);
+}
+
+.option.best { border-color: rgba(63, 185, 80, 0.5); }
+.option.rejected { opacity: 0.85; border-color: rgba(248, 81, 73, 0.25); }
+
+.option-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.option-title { font-weight: 600; font-size: 15px; }
+.option-tonnes { margin-left: auto; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.option-explain { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+.workings {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px 16px;
+  font-size: 11.5px;
+}
+.workings div span { color: var(--muted); }
+
+.error { color: var(--bad); font-size: 13px; padding: 10px 0; }
+.loading { color: var(--muted); font-size: 13px; padding: 20px 0; }
+.muted { color: var(--muted); }
+
+/* --- modelled figures ---------------------------------------------------
+   A third badge alongside real/synthetic. A forecast is neither a fetched
+   observation nor a fabricated feed, and conflating it with either would
+   make both labels useless. See SYNTHETIC_DATA.md. */
+.badge-modelled { background: rgba(68, 147, 248, 0.15); color: var(--accent); border: 1px solid rgba(68, 147, 248, 0.35); }
+.badge-noedge { background: rgba(139, 148, 158, 0.15); color: var(--muted); border: 1px solid var(--border); }
+.badge-strong { background: rgba(35, 134, 54, 0.18); color: var(--good); border: 1px solid rgba(63, 185, 80, 0.35); }
+.badge-weak { background: rgba(158, 106, 3, 0.18); color: var(--warn); border: 1px solid rgba(210, 153, 34, 0.35); }
+
+/* --- alert severities --------------------------------------------------- */
+.badge-critical { background: rgba(248, 81, 73, 0.22); color: var(--bad); border: 1px solid rgba(248, 81, 73, 0.45); }
+.badge-warning { background: rgba(158, 106, 3, 0.2); color: var(--warn); border: 1px solid rgba(210, 153, 34, 0.4); }
+.badge-watch { background: rgba(68, 147, 248, 0.15); color: var(--accent); border: 1px solid rgba(68, 147, 248, 0.3); }
+.badge-info { background: rgba(139, 148, 158, 0.15); color: var(--muted); border: 1px solid var(--border); }
+
+.alert { border: 1px solid var(--border); border-left-width: 3px; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; background: var(--panel-2); }
+.alert.critical { border-left-color: var(--bad); }
+.alert.warning { border-left-color: var(--warn); }
+.alert.watch { border-left-color: var(--accent); }
+.alert.info { border-left-color: var(--muted); }
+.alert-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.alert-title { font-weight: 600; font-size: 14px; }
+.alert-body { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+.alert-action { font-size: 12.5px; line-height: 1.55; margin-top: 8px; padding: 8px 10px; background: rgba(68, 147, 248, 0.07); border-radius: 6px; border: 1px solid rgba(68, 147, 248, 0.15); }
+.alert-action b { color: var(--accent); font-weight: 600; }
+
+/* --- monitor board ------------------------------------------------------ */
+.monitor { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; }
+.monitor:last-child { border-bottom: none; }
+.monitor .m-label { flex: 0 0 240px; font-weight: 500; }
+.monitor .m-value { flex: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
+.monitor .m-thresh { flex: 0 0 240px; color: var(--muted); font-size: 11.5px; }
+
+/* --- recommendation card ------------------------------------------------ */
+.recommend { border-radius: 10px; padding: 18px 20px; border: 1px solid var(--border); background: var(--panel-2); }
+.recommend.fix { border-color: rgba(63, 185, 80, 0.45); }
+.recommend.wait { border-color: rgba(210, 153, 34, 0.45); }
+.recommend.split { border-color: rgba(68, 147, 248, 0.45); }
+.recommend.infeasible { border-color: rgba(248, 81, 73, 0.45); }
+.recommend .verdict { font-size: 30px; font-weight: 700; letter-spacing: -0.8px; }
+.recommend .verdict.fix { color: var(--good); }
+.recommend .verdict.wait { color: var(--warn); }
+.recommend .verdict.split { color: var(--accent); }
+.recommend .verdict.infeasible { color: var(--bad); }
+.recommend .rationale { font-size: 13px; line-height: 1.65; color: var(--muted); margin-top: 10px; max-width: 900px; }
